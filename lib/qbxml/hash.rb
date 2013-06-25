@@ -61,7 +61,13 @@ private
         when Hash
           self.hash_to_xml(val, opts.merge({root: key, skip_instruct: true}))
         when Array
-          val.map { |i| self.hash_to_xml(i, opts.merge({root: key, skip_instruct: true})) }
+          val.map { |i| 
+            if i.is_a?(Hash)
+              self.hash_to_xml(i, opts.merge({root: key, skip_instruct: true})) 
+            else
+              builder.tag!(key, i, {})
+            end
+          }
         else
           builder.tag!(key, val, {})
         end
