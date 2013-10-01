@@ -5,4 +5,4 @@ gemspec
 gem 'simplecov', require: false, group: :test
 
 # backwards compatibility tests
-gem 'quickbooks_api'
+# gem 'quickbooks_api'
