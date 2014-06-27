@@ -133,7 +133,7 @@ private
   end
 
   def self.deep_convert(hash, opts = {}, &block)
-    hash.inject(self.new) do |h, (k,v)|
+    hash.inject(self.new.compare_by_identity) do |h, (k,v)|
       k = k.to_s
       ignored = IGNORED_KEYS.include?(k) 
       if ignored
